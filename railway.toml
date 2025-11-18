@@ -1,0 +1,18 @@
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -e ."
+
+[deploy]
+startCommand = "alembic upgrade head && gunicorn main:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+healthcheckPath = "/health"
+healthcheckTimeout = 100
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 3
+
+[environments.production]
+[environments.production.deploy]
+startCommand = "alembic upgrade head && gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT --timeout 120"
+
+[environments.staging]
+[environments.staging.deploy]
+startCommand = "alembic upgrade head && gunicorn main:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"

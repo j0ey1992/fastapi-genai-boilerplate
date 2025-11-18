@@ -1,0 +1,4 @@
+USER QUESTION:
+{question}
+
+Please provide a step-by-step answer based ONLY on the Voyage Care policies provided above. Include policy citations and clear guidance on whether this requires escalation.

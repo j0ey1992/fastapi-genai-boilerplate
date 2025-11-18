@@ -32,7 +32,7 @@ class AppConfig(BaseSettings):
     REDIS_PORT: str = ""
     REDIS_PASSWORD: str = ""
 
-    # OPENAI Model
+    # OPENAI Model (legacy - transitioning to Gemini)
     OPENAI_API_KEY: str = ""
     TAVILY_API_KEY: str = ""
 
@@ -43,6 +43,20 @@ class AppConfig(BaseSettings):
     # Search Provider Configuration
     SEARCH_PROVIDER: str = "duckduckgo"  # "duckduckgo" or "tavily"
     DUCKDUCKGO_MAX_RESULTS: int = 10
+
+    # Google Gemini Configuration
+    GEMINI_API_KEY: str = ""
+    GEMINI_CHAT_MODEL: str = "gemini-2.0-flash-exp"
+    GEMINI_EMBEDDING_MODEL: str = "text-embedding-004"
+
+    # Qdrant Vector Database
+    QDRANT_URL: str = "http://localhost:6333"
+    QDRANT_API_KEY: str = ""
+    QDRANT_COLLECTION_NAME: str = "voyage_policies"
+    EMBEDDING_DIMENSION: int = 768  # Gemini text-embedding-004 dimension
+
+    # PostgreSQL Database
+    DATABASE_URL: str = "postgresql+asyncpg://user:password@localhost:5432/voyage_policies"
 
     # LangFuse
     LANGFUSE_HOST: str = ""
